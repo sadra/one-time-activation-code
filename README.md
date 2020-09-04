@@ -126,7 +126,7 @@ import {ReachedToAttemptsException} from 'one-time-activation-code'
 try{
 	otac.isValid('text@gmail.com', '121212');
 }catch(error){
-    if(error instanceOf ReachedToAttemptsException){
+    if(error instanceof ReachedToAttemptsException){
        console.log(error.message) 
     }
 }
@@ -144,7 +144,7 @@ import {NotFoundKeyException} from 'one-time-activation-code'
 try{
 	otac.isValid('text@gmail.com', '121212');
 }catch(error){
-    if(error instanceOf NotFoundKeyException){
+    if(error instanceof NotFoundKeyException){
        console.log(error.message) 
     }
 }
