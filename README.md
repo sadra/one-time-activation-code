@@ -62,7 +62,7 @@ Or you can create the instance with options:
 
 First of all, you need store the _activation code_ with a _unique key_.
 
-**Understory:**
+**User Story:**
 
 - Store activation code for user
 - We Send this activation to its email
