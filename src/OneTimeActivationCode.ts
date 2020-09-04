@@ -48,9 +48,8 @@ export default class OneTimeActivationCode {
   isValid(key: string, code: string): boolean {
     const encodedCode = this.encodeCode ? crypto.createHash('sha256').update(code).digest('hex') : code;
     const activationCode = this.get(key);
-    const ttl = this.cacheSystem.getTtl(`otac_${key}`) || -1;
 
-    this.handleAttempts(key, activationCode, ttl);
+    this.handleAttempts(key, activationCode);
 
     if (activationCode.code !== encodedCode) {
       return false;
@@ -61,19 +60,21 @@ export default class OneTimeActivationCode {
     return true;
   }
 
-  private handleAttempts(key: string, activationCode: ActivationCode, ttl: number) {
+  private handleAttempts(key: string, activationCode: ActivationCode) {
+    const ttl = (this.cacheSystem.getTtl(`otac_${key}`) || new Date().getTime()) - new Date().getTime();
+
     if (this.attemptsChance > 0) {
       if (activationCode.attempts >= this.attemptsChance) {
         throw new ReachedToAttemptsException(
-          `Sorry, you\'ve reached to more than ${
-            activationCode.attempts
-          } attempts. Please try again ${this.timeConversion(ttl)} later`,
+          `Sorry, you\'ve reached to ${activationCode.attempts} attempts. Please try again ${this.timeConversion(
+            ttl,
+          )} later`,
         );
       }
     }
 
     activationCode.attempts++;
-    this.cacheSystem.set(`otac_${key}`, activationCode, ttl);
+    this.cacheSystem.set(`otac_${key}`, activationCode, Math.floor(ttl / 1000));
   }
 
   private timeConversion = (duration: number) => {
