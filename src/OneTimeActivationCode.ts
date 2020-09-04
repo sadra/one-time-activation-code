@@ -6,17 +6,17 @@ import crypto from 'crypto';
 
 export default class OneTimeActivationCode {
   encodeCode: boolean = true;
-  expiresOn: number = 180;
+  expiresAfter: number = 180;
   attemptsChance: number = 0;
   cacheSystem = new NodeCache();
 
-  constructor(options?: { encodeCode?: boolean; expiresOn?: number; attemptsChance?: number }) {
+  constructor(options?: { encodeCode?: boolean; expiresAfter?: number; attemptsChance?: number }) {
     if (options && options.encodeCode) {
       this.encodeCode = options.encodeCode;
     }
 
-    if (options && options.expiresOn) {
-      this.expiresOn = options.expiresOn;
+    if (options && options.expiresAfter) {
+      this.expiresAfter = options.expiresAfter;
     }
 
     if (options && options.attemptsChance) {
@@ -32,7 +32,7 @@ export default class OneTimeActivationCode {
       code: encodedCode,
     };
 
-    this.cacheSystem.set(`otac_${key}`, activationCode, this.expiresOn);
+    this.cacheSystem.set(`otac_${key}`, activationCode, this.expiresAfter);
   }
 
   get(key: string): ActivationCode {
