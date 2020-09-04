@@ -1,8 +1,8 @@
 import { ActivationCode } from './types/ActivationCode.type';
 import ReachedToAttemptsException from './exceptions/ReachedToAttempts.exception';
 import NotFoundKeyException from './exceptions/NotFoundKey.exception';
-const NodeCache = require('node-cache');
-const crypto = require('crypto');
+import * as NodeCache from 'node-cache';
+import * as crypto from 'crypto';
 
 export default class OneTimeActivationCode {
   encodeCode: boolean = true;
@@ -48,7 +48,7 @@ export default class OneTimeActivationCode {
   isValid(key: string, code: string): boolean {
     const encodedCode = this.encodeCode ? crypto.createHash('sha256').update(code).digest('hex') : code;
     const activationCode = this.get(key);
-    const ttl = this.cacheSystem.getTtl(`otac_${key}`);
+    const ttl = this.cacheSystem.getTtl(`otac_${key}`) || -1;
 
     this.handleAttempts(key, activationCode, ttl);
 
@@ -78,7 +78,7 @@ export default class OneTimeActivationCode {
 
   private getExpireTime = (millis: number): string => {
     const minutes = Math.floor(millis / 60000);
-    const seconds = parseInt(((millis % 60000) / 1000).toFixed(0));
+    const seconds = parseInt(((millis % 60000) / 1000).toFixed(0), 10);
     return seconds === 60 ? minutes + 1 + ':00' : minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   };
 }
