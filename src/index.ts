@@ -1,5 +1,3 @@
 import OneTimeActivationCode from './OneTimeActivationCode';
 
-export = {
-  OneTimeActivationCode,
-};
+export = OneTimeActivationCode;
