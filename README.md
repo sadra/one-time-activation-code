@@ -43,14 +43,18 @@ const OneTimeActivationCode = require('one-time-activation-code');
 Then create an instance.
 
 ```ts
+const otac = new OneTimeActivationCode();
+```
+
+Or you can create the instance with options:
+
+```ts
 const otac = new OneTimeActivationCode({
     expiresAfter: 500,
     attemptsChance: 3,
     encodeCode: true,
 });
 ```
-
-Or you can create the instance with options:
 
 | Params         | Description                                                  | Default | Mandatory |
 | -------------- | ------------------------------------------------------------ | ------- | --------- |
