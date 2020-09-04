@@ -67,7 +67,7 @@ export default class OneTimeActivationCode {
         throw new ReachedToAttemptsException(
           `Sorry, you\'ve reached to more than ${
             activationCode.attempts
-          } attempts. Please try again ${this.getExpireTime(ttl)} later`,
+          } attempts. Please try again ${this.timeConversion(ttl)} later`,
         );
       }
     }
@@ -76,9 +76,28 @@ export default class OneTimeActivationCode {
     this.cacheSystem.set(`otac_${key}`, activationCode, ttl);
   }
 
-  private getExpireTime = (millis: number): string => {
-    const minutes = Math.floor(millis / 60000);
-    const seconds = parseInt(((millis % 60000) / 1000).toFixed(0), 10);
-    return seconds === 60 ? minutes + 1 + ':00' : minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  private timeConversion = (duration: number) => {
+    const portions: string[] = [];
+
+    const msInHour = 1000 * 60 * 60;
+    const hours = Math.trunc(duration / msInHour);
+    if (hours > 0) {
+      portions.push(hours + 'h');
+      duration = duration - hours * msInHour;
+    }
+
+    const msInMinute = 1000 * 60;
+    const minutes = Math.trunc(duration / msInMinute);
+    if (minutes > 0) {
+      portions.push(minutes + 'm');
+      duration = duration - minutes * msInMinute;
+    }
+
+    const seconds = Math.trunc(duration / 1000);
+    if (seconds > 0) {
+      portions.push(seconds + 's');
+    }
+
+    return portions.join(' ');
   };
 }
