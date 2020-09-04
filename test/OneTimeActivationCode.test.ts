@@ -18,7 +18,7 @@ describe('One Time Activation Code Test', () => {
           attempts: 0,
         } as ActivationCode),
         del: jest.fn(),
-        getTtl: jest.fn().mockReturnValue(50000),
+        getTtl: jest.fn().mockReturnValue(1456000600000),
       } as typeof NodeCache;
     });
 
@@ -85,6 +85,7 @@ describe('One Time Activation Code Test', () => {
 
       it('should increment activationCode and call the cacheSystem.set with new arguments ', () => {
         const encodedCode = crypto.createHash('sha256').update('123456').digest('hex');
+        const ttl = 1456000600000 - new Date().getTime();
 
         oneTimeActivationCode.isValid('the_key', '123456');
 
@@ -94,7 +95,7 @@ describe('One Time Activation Code Test', () => {
             code: encodedCode,
             attempts: 1,
           } as ActivationCode,
-          50000,
+          Math.floor(ttl / 1000),
         );
       });
 
