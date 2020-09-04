@@ -4,7 +4,7 @@ import NotFoundKeyException from './exceptions/NotFoundKey.exception';
 import NodeCache from 'node-cache';
 import crypto from 'crypto';
 
-export class OneTimeActivationCode {
+export default class OneTimeActivationCode {
   encodeCode: boolean = true;
   expiresOn: number = 180;
   attemptsChance: number = 0;
