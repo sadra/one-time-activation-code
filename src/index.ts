@@ -1,1 +1,5 @@
-export { OneTimeActivationCode } from './OneTimeActivationCode';
+import OneTimeActivationCode from './OneTimeActivationCode';
+
+export = {
+  OneTimeActivationCode,
+};
