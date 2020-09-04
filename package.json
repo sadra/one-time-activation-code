@@ -10,6 +10,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js}\"",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:cov": "jest --coverage --watchAll",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
@@ -52,7 +53,7 @@
       "jsx",
       "json"
     ],
-    "rootDir": "test",
+    "rootDir": "./",
     "testRegex": ".test.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"

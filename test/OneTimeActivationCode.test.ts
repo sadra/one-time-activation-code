@@ -1,7 +1,7 @@
-import OneTimeActivationCode from '../src';
 import { ActivationCode } from '../src/types/ActivationCode.type';
 import NotFoundKeyException from '../src/exceptions/NotFoundKey.exception';
 import ReachedToAttemptsException from '../src/exceptions/ReachedToAttempts.exception';
+import { OneTimeActivationCode } from '../src';
 const NodeCache = require('node-cache');
 const crypto = require('crypto');
 
