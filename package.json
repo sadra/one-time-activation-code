@@ -10,12 +10,14 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js}\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage --watchAll",
+    "test:cov": "jest --coverage",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "make-badges": "node_modules/.bin/jest-badges-readme",
+    "make-readme": "npm run test:cov && npm run make-badges"
   },
   "repository": {
     "type": "git",
@@ -28,12 +30,13 @@
     "one time password"
   ],
   "author": "Sadra Isapanah Amlashi",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sadra/one-time-activation-code/issues"
   },
   "homepage": "https://github.com/sadra/one-time-activation-code#readme",
   "devDependencies": {
+    "@olavoparno/jest-badges-readme": "^1.5.1",
     "@types/jest": "^26.0.13",
     "jest": "^26.4.2",
     "prettier": "^2.1.1",
@@ -58,8 +61,14 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "collectCoverage": true
   },
   "dependencies": {
     "node-cache": "^5.1.2"

@@ -124,7 +124,7 @@ describe('One Time Activation Code Test', () => {
       oneTimeActivationCode = new OneTimeActivationCode({
         attemptsChance: 3,
         encodeCode: false,
-        expiresOn: 60,
+        expiresAfter: 60,
       });
 
       oneTimeActivationCode.cacheSystem = {
