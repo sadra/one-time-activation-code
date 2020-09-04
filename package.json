@@ -1,6 +1,6 @@
 {
   "name": "one-time-activation-code",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "One Time Activation Code",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
