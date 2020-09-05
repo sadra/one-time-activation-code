@@ -6,6 +6,9 @@
 ![Coveralls Coverage](https://img.shields.io/badge/Coverage-89.09%25-yellow.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Twitter](https://img.shields.io/twitter/follow/sadra_me?style=social)](https://twitter.com/sadra_me)
+
+![Activation Code](https://user-images.githubusercontent.com/18361407/92300897-fcd02b80-ef73-11ea-9a43-c0e2e83e68df.jpg)
+
 ## About
 
 If you have authentication in your project, and trying to verify user `mobile` or` email`, probably encountered with managing the activation code issue.
@@ -13,10 +16,11 @@ If you have authentication in your project, and trying to verify user `mobile` o
 With this package, you could solve all your issue in one-time activation codes.
 
 **Features**
- - Store activation codes in fast `cache memory`.
- - Delete activation code after a specific time automatically with `expiration`.
- - Restrict the user to prevent trying more than defined `attempts chance`.
- - Delete activation code after validation automatically.
+
+- Store activation codes in fast `cache memory`.
+- Delete activation code after a specific time automatically with `expiration`.
+- Restrict the user to prevent trying more than defined `attempts chance`.
+- Delete activation code after validation automatically.
 
 ## Install 🐙
 
@@ -31,7 +35,7 @@ npm install one-time-activation-code --save
 Then Import it in the target file.
 
 ```typescript
-import OneTimeActivationCode from 'one-time-activation-code'
+import OneTimeActivationCode from 'one-time-activation-code';
 ```
 
 or in old js
@@ -50,17 +54,17 @@ Or you can create the instance with options:
 
 ```ts
 const otac = new OneTimeActivationCode({
-    expiresAfter: 500,
-    attemptsChance: 3,
-    encodeCode: true,
+  expiresAfter: 500,
+  attemptsChance: 3,
+  encodeCode: true,
 });
 ```
 
-| Params         | Description                                                  | Default | Mandatory |
-| -------------- | ------------------------------------------------------------ | ------- | --------- |
-| expiresAfter      | Expire and delete activation code after `n`  **seconds**. | 180 (seconds) | NO        |
-| attemptsChance | Attempts chance to enter wrong validations. It should be more than 0. | 0       | NO        |
-| encodeCode     | Sote activation code in encoded or cleared string. | true    | NO        |
+| Params         | Description                                                             | Default       | Mandatory |
+| -------------- | ----------------------------------------------------------------------- | ------------- | --------- |
+| expiresAfter   | Expire and delete activation code after `n` **seconds**.                | 180 (seconds) | NO        |
+| attemptsChance | Attempts chance to enter wrong validations. It should be more than `0`. | 0             | NO        |
+| encodeCode     | Store activation code in encoded or cleared string.                     | true          | NO        |
 
 ### Set Activation Code
 
@@ -97,15 +101,15 @@ The activation code store as an object with two parameters `attempts` and `code`
 - `attempts`: Shows how many times the user tries to validate activation code.
 
 ```ts
-otac.get('text@gmail.com')
+otac.get('text@gmail.com');
 ```
 
 Then, it returns:
 
 ```json
 {
-    "code": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
-    "attempts": 2
+  "code": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+  "attempts": 2
 }
 ```
 
@@ -113,8 +117,8 @@ If `encode` was set to **false**:
 
 ```json
 {
-    "code": "123456",
-    "attempts": 2
+  "code": "123456",
+  "attempts": 2
 }
 ```
 
@@ -125,14 +129,14 @@ If `encode` was set to **false**:
 If you set `attemptsChance` in options, whenever user attempts reached to **attemptsChance** then the function throw and exception with `ReachedToAttemptsException` type. So, you should handle this type of exception.
 
 ```ts
-import {ReachedToAttemptsException} from 'one-time-activation-code'
+import { ReachedToAttemptsException } from 'one-time-activation-code';
 
-try{
-	otac.isValid('text@gmail.com', '121212');
-}catch(error){
-    if(error instanceof ReachedToAttemptsException){
-       console.log(error.message) 
-    }
+try {
+  otac.isValid('text@gmail.com', '121212');
+} catch (error) {
+  if (error instanceof ReachedToAttemptsException) {
+    console.log(error.message);
+  }
 }
 
 //console: Sorry, you've reached to more than 3 attempts. Please try again 1m 22s later.
@@ -143,14 +147,14 @@ try{
 As we know if activation coed exceeds to its expiration or maybe activated before, it deleted automatically. So if you try check validation or just get the the activation object, it throw exception with `NotFoundKeyException` type. So, you should handle this type of exception too.
 
 ```ts
-import {NotFoundKeyException} from 'one-time-activation-code'
+import { NotFoundKeyException } from 'one-time-activation-code';
 
-try{
-	otac.isValid('text@gmail.com', '121212');
-}catch(error){
-    if(error instanceof NotFoundKeyException){
-       console.log(error.message) 
-    }
+try {
+  otac.isValid('text@gmail.com', '121212');
+} catch (error) {
+  if (error instanceof NotFoundKeyException) {
+    console.log(error.message);
+  }
 }
 
 //console: Sorry, there is no activation code. Please try again to get new code.
@@ -159,12 +163,15 @@ try{
 So the user should request for new activation code.
 
 ## Contributing 🍰
+
 Please make sure to read the [Contributing Guide](https://github.com/sadra/one-time-activation-code/blob/master/.github/CONTRIBUTING.md) before making a pull request.
 
 Thank you to all the people who already contributed to this project!
 
 ## Maintainers 👷
+
 List of maintainers, replace all `href`, `src` attributes by your maintainers datas.
+
 <table>
   <tr>
     <td align="center"><a href="https://sadra.me/"><img src="https://avatars0.githubusercontent.com/u/18361407?s=460&u=0f9a90e53abcfa75f087b679e55dcf8423d8a89a&v=4" width="100px;" alt="Sadra Isapanah Amlashi"/><br /><sub><b>Sadra Isapanah Amlashi</b></sub></a><br /><a href="#" title="Code">💻</a></td>
@@ -172,5 +179,5 @@ List of maintainers, replace all `href`, `src` attributes by your maintainers da
 </table>
 
 ## License ⚖️
-MIT
 
+MIT
