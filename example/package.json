@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "one-time-activation-code": "^1.0.12"
+    "one-time-activation-code": "^1.0.13"
   }
 }
