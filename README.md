@@ -8,7 +8,7 @@
 [![Twitter](https://img.shields.io/twitter/follow/sadra_me?style=social)](https://twitter.com/sadra_me)
 ## About
 
-If you have authentication and authorize your user identification by activation codes, you probably encountered with managing the activation code issue.
+If you have authentication in your project, and trying to verify user `mobile` or` email`, probably encountered with managing the activation code issue.
 
 With this package, you could solve all your issue in one-time activation codes.
 
