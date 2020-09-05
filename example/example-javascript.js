@@ -1,5 +1,5 @@
-const OneTimeActivationCode = require('../lib')
-const {ReachedToAttemptsException, NotFoundKeyException} = require('../lib')
+const OneTimeActivationCode = require('one-time-activation-code')
+const {ReachedToAttemptsException, NotFoundKeyException} = require('one-time-activation-code')
 
 const otac = new OneTimeActivationCode({attemptsChance: 2});
 

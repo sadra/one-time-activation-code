@@ -1,5 +1,5 @@
-import OneTimeActivationCode from '../lib'
-import {NotFoundKeyException, ReachedToAttemptsException} from '../lib'
+import OneTimeActivationCode from 'one-time-activation-code'
+import {NotFoundKeyException, ReachedToAttemptsException} from 'one-time-activation-code'
 
 class ExampleTypescript {
    otac = new OneTimeActivationCode({attemptsChance: 2});
