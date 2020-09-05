@@ -1,10 +1,3 @@
-import OneTimeActivationCode from './OneTimeActivationCode';
-import ReachedToAttemptsException from './exceptions/ReachedToAttempts.exception';
-import NotFoundKeyException from './exceptions/NotFoundKey.exception';
-
-export = OneTimeActivationCode;
-
-module.exports = {
-  ReachedToAttemptsException,
-  NotFoundKeyException,
-};
+export { default as ReachedToAttemptsException } from './exceptions/ReachedToAttempts.exception';
+export { default as NotFoundKeyException } from './exceptions/NotFoundKey.exception';
+export { default } from './OneTimeActivationCode';
