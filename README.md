@@ -1,13 +1,13 @@
 # One Time Activation Code [![NPM](https://nodei.co/npm/one-time-activation-code.png)](https://nodei.co/npm/one-time-activation-code/)
 
+![Activation Code](https://user-images.githubusercontent.com/18361407/92300897-fcd02b80-ef73-11ea-9a43-c0e2e83e68df.jpg)
+
 ![](https://img.shields.io/npm/l/one-time-activation-code)
 [![NPM package version](https://img.shields.io/npm/v/one-time-activation-code?label=npm%20package)](https://www.npmjs.com/package/one-time-activation-code)
 [![GitHub issues](https://img.shields.io/github/issues/sadra/one-time-activation-code)](https://github.com/sadra/one-time-activation-code/issues)
 ![Coveralls Coverage](https://img.shields.io/badge/Coverage-89.09%25-yellow.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Twitter](https://img.shields.io/twitter/follow/sadra_me?style=social)](https://twitter.com/sadra_me)
-
-![Activation Code](https://user-images.githubusercontent.com/18361407/92300897-fcd02b80-ef73-11ea-9a43-c0e2e83e68df.jpg)
 
 ## About
 
