@@ -11,7 +11,7 @@ export default class OneTimeActivationCode {
   cacheSystem = new NodeCache();
 
   constructor(options?: { encodeCode?: boolean; expiresAfter?: number; attemptsChance?: number }) {
-    if (options && options.encodeCode) {
+    if (options && options.encodeCode !== undefined) {
       this.encodeCode = options.encodeCode;
     }
 
